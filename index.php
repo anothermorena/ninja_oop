@@ -40,22 +40,36 @@
 
   }
 
+
+  class AdminUser extends User {
+
+    public $level;
+
+    public function __construct($username,$email,$level){
+        $this->level = $level;
+        parent::__construct($username,$email);
+        //the parent keyword refers to the main class we inherited from, we are accessing the construct function
+        //from it
+    }
+
+  }
+
 //this is called instantiation, they are just instances of the User Class
 //uses the construct magic method to create the objects with arguments
 $userOne = new User("Morena","Morena@tswanakart.com");
 $userTwo = new User("Otsogile","onalepeloo@live.com");
+$userThree = new AdminUser("Control","control@reco.online",5);
 
+echo $userThree->username . "<br>";
+echo $userThree->getEmail() . "<br>";
+echo $userThree->level;
 
-$userOne->setEmail("morens@gmail.com");
-
-echo $userOne->getEmail() . "<br>";
-echo $userTwo->getEmail();
 
 ?>
 
 <html lang="en">
 <head>
-  <title>PHP OOP-> Access Modifiers,Getters & Setters</title>
+  <title>PHP OOP-> Inheritance</title>
 </head>
 <body>
   
