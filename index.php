@@ -4,9 +4,16 @@
 
     //the public keyword makes the properties to be accessbile outside the User Class
     //properties are basically variables.
+    
+    public $username;
+    public $email;
 
-    public $username = 'Morena';
-    public $email = 'morena@tswanakart.com';
+    //this contructor function enables the class to instantiated with parameters/arguments, 
+    //instead of manually overwriting it after it has been created.
+    public function __construct($username,$email){
+        $this->username = $username;
+        $this->email = $email;
+    }
 
     //classes also have methods which are basically functions, this reffers to what the object can do
     public function addFriend(){
@@ -17,33 +24,21 @@
   }
 
   //this is called instantiation, they are just instances of the User Class
-  $userOne = new User();
-  $userTwo = new User();
+  //uses the construct magic method to create the objects with arguments
+  $userOne = new User("Morena","Morena@tswanakart.com");
+  $userTwo = new User("Otsogile","onalepeloo@live.com");
 
   //to access a class properties from its instance we use an arrow ->
   echo $userOne->username . "<br>";
   echo $userOne->email . "<br>";
 
-  //accessing methods is the same as accesing properties and invoking the function as you normally would
   echo $userOne->addFriend() . "<br>";
 
-
-  //you can always override instance property values by aaccessing and assigning new ones
-
-  $userTwo->username = "Otsogile";
-  $userTwo->email = "onalepeloo@live.com";
 
   echo $userTwo->username . "<br>";
   echo $userTwo->email . "<br>";
   echo $userTwo->addFriend() . "<br>";
 
-
-  //shows all variables/properties that a class has
-  //pass the class as a string to the function
-  //print_r(get_class_vars("User"));
-
-  //gets all methods a class has
-  //print_r(get_class_methods("User"));
 
 ?>
 
