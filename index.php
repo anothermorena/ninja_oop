@@ -6,7 +6,8 @@
     //properties are basically variables.
 
     public $username;
-    private $email;
+    protected $email;
+    public $role = "Member";
 
     //this contructor function enables the class to instantiated with parameters/arguments, 
     //instead of manually overwriting it after it has been created.
@@ -22,11 +23,14 @@
         return "$this->username Added a friend";
     }
 
+    public function message(){
+        return "$this->email sent a new message";
+    }
+
     //getters-> used to retrieve properties whose access is set to private outside the class
     public function getEmail(){
         return $this->email;
     }
-
 
     //setters-> used to update a class/object property whose access is private 
     //from outside the class local scope
@@ -38,18 +42,25 @@
         }
     }
 
+
   }
 
 
   class AdminUser extends User {
 
     public $level;
+    //this overides the role property inherited from the user class.
+    public $role = "Control";
 
     public function __construct($username,$email,$level){
         $this->level = $level;
         parent::__construct($username,$email);
         //the parent keyword refers to the main class we inherited from, we are accessing the construct function
         //from it
+    }
+
+    public function message(){
+        return "admin $this->email sent a new message";
     }
 
   }
@@ -60,16 +71,16 @@ $userOne = new User("Morena","Morena@tswanakart.com");
 $userTwo = new User("Otsogile","onalepeloo@live.com");
 $userThree = new AdminUser("Control","control@reco.online",5);
 
-echo $userThree->username . "<br>";
-echo $userThree->getEmail() . "<br>";
-echo $userThree->level;
+echo $userOne->role;
+
+
 
 
 ?>
 
 <html lang="en">
 <head>
-  <title>PHP OOP-> Inheritance</title>
+  <title>PHP OOP-> Overriding Properties & Methods</title>
 </head>
 <body>
   
